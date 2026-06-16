@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unbeatable Tic-Tac-Toe</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Ciclope Black', 'Outfit', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-[#050505] text-white h-screen w-screen overflow-hidden font-sans selection:bg-red-500/30">
+<!-- NEW: Landing Page -->
+    <div id="landing-page" class="absolute inset-0 z-[100] flex flex-col items-center justify-center bg-cover bg-center bg-no-repeat transition-opacity duration-1000 overflow-hidden" style="background-image: url('./assets/images/LandingPageBackground.png');">
+        <!-- Optional darkening overlay removed per request -->
+
+        <!-- Diagonal Marquee (Top Right) -->
+        <div class="absolute top-[8%] -right-[15%] w-[800px] md:top-[10%] md:-right-[10%] md:w-[1000px] bg-[#AC2A12]/85 overflow-hidden flex items-center h-12 md:h-16 z-50 transform rotate-45 shadow-[0_0_30px_rgba(0,0,0,0.8)] pointer-events-none">
+            <div class="flex whitespace-nowrap animate-marquee items-center text-gray-300 font-sans text-2xl md:text-4xl tracking-wide uppercase pt-1">
+                <!-- First set -->
+                <span class="mx-6">YSKEW</span>
+                <span class="mx-2">///</span>
+                <span class="mx-6">BEYOND PARALLEL ASSUMPTIONS</span>
+                <img src="./assets/images/yskew_logo_white.svg" alt="Logo" class="h-8 mx-6 inline-block">
+                
+                <!-- Duplicated for seamless loop -->
+                <span class="mx-6">YSKEW</span>
+                <span class="mx-2">///</span>
+                <span class="mx-6">BEYOND PARALLEL ASSUMPTIONS</span>
+                <img src="./assets/images/yskew_logo_white.svg" alt="Logo" class="h-8 mx-6 inline-block">
+
+                <!-- Third set -->
+                <span class="mx-6">YSKEW</span>
+                <span class="mx-2">///</span>
+                <span class="mx-6">BEYOND PARALLEL ASSUMPTIONS</span>
+                <img src="./assets/images/yskew_logo_white.svg" alt="Logo" class="h-8 mx-6 inline-block">
+                
+                <!-- Fourth set -->
+                <span class="mx-6">YSKEW</span>
+                <span class="mx-2">///</span>
+                <span class="mx-6">BEYOND PARALLEL ASSUMPTIONS</span>
+                <img src="./assets/images/yskew_logo_white.svg" alt="Logo" class="h-8 mx-6 inline-block">
+            </div>
+        </div>
+        
+        <div class="relative z-10 flex flex-col items-center text-center px-4 font-sans mt-20">
+            <h1 id="landing-title" class="text-[6rem] md:text-[10rem] font-bold tracking-widest text-white mb-2 drop-shadow-xl" style="font-family: 'PaintCans', 'Ciclope Black', sans-serif;">Yskew</h1>
+            
+            <div id="landing-subtitle" class="flex flex-col items-center mt-4">
+                <div class="text-3xl md:text-5xl font-bold tracking-wide drop-shadow-md text-white min-h-[60px] flex items-center justify-center" style="font-family: 'PaintCans', 'Ciclope Black', sans-serif;">
+                    <span id="landing-text-content" style="-webkit-text-stroke: 0.25px #000;"></span>
+                    <span id="landing-text-cursor" class="ml-1 hidden font-light" style="-webkit-text-stroke: 0px;">|</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Right Button and Arrow -->
+        <div id="landing-bottom-right" class="absolute bottom-12 right-12 flex items-center justify-end opacity-0 pointer-events-none z-20">
+            <!-- Arrow pointing right towards button (Comical/Bouncing) -->
+            <svg id="landing-arrow" class="w-16 h-16 text-white mr-4 animate-bounce" style="animation: bounce-x 1s cubic-bezier(0.8, 0, 1, 1) infinite;" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+            </svg>
+            
+            <button id="play-game-btn" class="group relative px-4 py-2 bg-[#B51010] text-white text-base md:text-lg tracking-widest uppercase overflow-hidden rounded-md transition-all duration-300 hover:scale-105 hover:shadow-[0_0_30px_rgba(181,16,16,0.6)] border-4 border-black" style="font-family: 'Ciclope Black', sans-serif;">
+                <span class="relative z-10 drop-shadow-md">Learn Something new</span>
+                <div class="absolute inset-0 h-full w-0 bg-white/20 transition-all duration-300 ease-out group-hover:w-full"></div>
+            </button>
+        </div>
+    </div>
+
+    <div class="flex h-full w-full">
+        <!-- Left Side: Tilted Video -->
+        <div class="w-1/2 hidden lg:flex h-full items-center justify-center relative perspective-1000 z-10 pl-20 pb-20 mix-blend-screen">
+            <div id="video-hover-container" class="video-container transform -rotate-12 transition-transform duration-500 hover:-rotate-6 hover:scale-105 cursor-pointer">
+                <video 
+                    id="hover-video"
+                    muted 
+                    playsinline 
+                    preload="auto"
+                    class="w-full max-w-[800px] h-auto object-cover"
+                >
+                    <source src="./assets/videos/YskewlogoVideo.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </div>
+
+        <!-- Game Board & Intro (Right Full Screen) -->
+        <div class="w-full lg:w-1/2 h-full flex flex-col justify-center items-center relative perspective-1000 bg-transparent pb-[20vh] pr-20">
+            
+            <!-- React Bits TextType Container (Vanilla Port) -->
+            <div id="intro-container" class="absolute inset-0 flex items-center justify-center z-50 transition-opacity duration-1000">
+                <div class="text-5xl lg:text-6xl font-light text-center px-12 tracking-wide leading-relaxed max-w-2xl min-h-[200px] flex items-center justify-center">
+                    <div>
+                        <span id="text-type-content" class="text-white"></span>
+                        <span id="text-type-cursor" class="text-white ml-1 inline-block">|</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Game Container (Initially Hidden) -->
+            <div id="game-container" class="absolute inset-0 flex flex-col justify-center items-center opacity-0 pointer-events-none scale-95 transition-all duration-1000 z-10 mb-[20vh]">
+
+                <!-- Game UI Wrapper -->
+                <div class="relative w-full max-w-lg aspect-square flex items-center justify-center scale-90 lg:scale-100">
+                    <!-- Board -->
+                    <div class="game-board-container relative">
+                        <div id="board" class="grid grid-cols-3 relative z-10 p-4">
+                            <!-- Cells generated by JS -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Score / Status Area -->
+                <div class="absolute bottom-12 flex items-end space-x-12 text-3xl font-bold tracking-widest uppercase">
+                    <div class="flex items-center text-white transition-transform duration-300 hover:scale-110">
+                        <div class="w-10 h-10 mr-4 svg-icon red-icon bg-white rounded-md p-1" id="icon-player-score"></div>
+                        <span id="score-player">0</span>
+                    </div>
+                    <div class="text-white text-2xl pb-1 opacity-80">
+                        DRAW - <span id="score-draw">0</span>
+                    </div>
+                    <div class="flex items-center text-white transition-transform duration-300 hover:scale-110">
+                        <div class="w-10 h-10 mr-4 svg-icon blue-icon bg-white rounded-md p-1" id="icon-ai-score"></div>
+                        <span id="score-ai">0</span>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+    <!-- Scrolling Footer Marquee -->
+    <div id="game-footer-marquee" class="fixed bottom-[10%] left-0 w-full bg-[#C6C6C6] overflow-hidden flex items-center h-16 z-50 opacity-0 pointer-events-none transition-opacity duration-1000">
+        <div class="flex whitespace-nowrap animate-marquee items-center text-black font-sans text-4xl tracking-wide uppercase pt-1">
+            <!-- First set -->
+            <span class="mx-6">YSKEW</span>
+            <span class="mx-2">///</span>
+            <span class="mx-6">BEYOND PARALLEL ASSUMPTIONS</span>
+                <img src="./assets/images/yskew_logo_rolling_text.png" alt="Logo" class="h-8 mx-6 inline-block">
+                
+                <!-- Duplicated for seamless loop -->
+                <span class="mx-6">YSKEW</span>
+                <span class="mx-2">///</span>
+                <span class="mx-6">BEYOND PARALLEL ASSUMPTIONS</span>
+                <img src="./assets/images/yskew_logo_rolling_text.png" alt="Logo" class="h-8 mx-6 inline-block">
+
+                <!-- Third set -->
+                <span class="mx-6">YSKEW</span>
+                <span class="mx-2">///</span>
+                <span class="mx-6">BEYOND PARALLEL ASSUMPTIONS</span>
+                <img src="./assets/images/yskew_logo_rolling_text.png" alt="Logo" class="h-8 mx-6 inline-block">
+                
+                <!-- Fourth set -->
+                <span class="mx-6">YSKEW</span>
+                <span class="mx-2">///</span>
+                <span class="mx-6">BEYOND PARALLEL ASSUMPTIONS</span>
+                <img src="./assets/images/yskew_logo_rolling_text.png" alt="Logo" class="h-8 mx-6 inline-block">
+        </div>
+    </div>
+
+    <script type="module" src="js/public-ribbons.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,233 @@
+/* style.css */
+@font-face {
+    font-family: 'Ciclope Black';
+    src: url('../assets/fonts/CiclopeBlack-Black.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'PaintCans';
+    src: url('../assets/fonts/paintcans/PaintCans_Free/PaintCans.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap');
+
+body {
+    font-family: 'Ciclope Black', 'Outfit', sans-serif;
+    background-color: #050505;
+    background-image: url('../assets/images/Yskewgamebg.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    margin: 0;
+    padding: 0;
+}
+
+.perspective-1000 {
+    perspective: 1000px;
+}
+
+/* Board styling */
+.game-board-container {
+    width: 450px;
+    height: 450px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: rotate(15deg); /* Tilted by 15 degrees */
+    transition: transform 0.5s ease;
+}
+
+/* Added pseudo-element specifically for the background image to handle blend mode correctly */
+.game-board-container::before {
+    content: '';
+    position: absolute;
+    inset: -50px; /* Expand slightly to ensure it covers */
+    background-image: url('../assets/images/game-bg.png');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 0;
+    pointer-events: none;
+}
+
+#board {
+    width: 320px;
+    height: 320px;
+    transition: all 0.5s ease;
+}
+
+.cell {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+/* Classic Tic-Tac-Toe Borders */
+.cell[data-index="0"], .cell[data-index="1"], .cell[data-index="2"],
+.cell[data-index="3"], .cell[data-index="4"], .cell[data-index="5"] {
+    border-bottom: 8px solid #111;
+    border-radius: 2px;
+}
+
+.cell[data-index="0"], .cell[data-index="3"], .cell[data-index="6"],
+.cell[data-index="1"], .cell[data-index="4"], .cell[data-index="7"] {
+    border-right: 8px solid #111;
+    border-radius: 2px;
+}
+
+/* Token container */
+.token {
+    width: 64px;
+    height: 64px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+@keyframes popIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.3) translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+/* Graffiti SVG styles */
+.svg-icon {
+    width: 100%;
+    height: 100%;
+    transition: all 0.3s ease;
+}
+
+.red-icon {
+    /* No color needed as stroke is hardcoded black #111 */
+}
+
+.blue-icon {
+    /* No color needed as stroke is hardcoded black #111 */
+}
+
+/* Win line animation */
+.win-line {
+    position: absolute;
+    background: #111;
+    z-index: 20;
+    opacity: 0;
+    border-radius: 6px;
+    animation: drawLine 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+    pointer-events: none;
+    filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.3));
+}
+
+/* Horizontal lines */
+.win-line-h { 
+    top: calc(16.66% - 4px); left: 5%; width: 90%; height: 8px; 
+    transform-origin: left center; 
+}
+.win-line-h.row-1 { top: calc(50% - 4px); }
+.win-line-h.row-2 { top: calc(83.33% - 4px); }
+
+@keyframes drawLine {
+    0% { transform: scaleX(0); opacity: 1; }
+    100% { transform: scaleX(1); opacity: 1; }
+}
+
+/* Vertical lines */
+.win-line-v { 
+    left: calc(16.66% - 4px); top: 5%; height: 90%; width: 8px; 
+    transform-origin: top center; 
+    animation: drawLineV 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+.win-line-v.col-1 { left: calc(50% - 4px); }
+.win-line-v.col-2 { left: calc(83.33% - 4px); }
+
+@keyframes drawLineV {
+    0% { transform: scaleY(0); opacity: 1; }
+    100% { transform: scaleY(1); opacity: 1; }
+}
+
+/* Diagonal lines */
+.win-line-d1 { 
+    top: 0%; left: 0%; width: 141%; height: 8px; 
+    transform-origin: top left; 
+    animation: drawLineD1 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+@keyframes drawLineD1 {
+    0% { transform: rotate(45deg) scaleX(0); opacity: 1; }
+    100% { transform: rotate(45deg) scaleX(1); opacity: 1; }
+}
+
+.win-line-d2 { 
+    top: 0%; left: 100%; width: 141%; height: 8px; 
+    transform-origin: top left; 
+    animation: drawLineD2 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+@keyframes drawLineD2 {
+    0% { transform: rotate(135deg) scaleX(0); opacity: 1; }
+    100% { transform: rotate(135deg) scaleX(1); opacity: 1; }
+}
+
+/* Winning token bounce */
+.cell.winner .token {
+    animation: pulseWin 2s infinite;
+}
+
+@keyframes pulseWin {
+    0% { transform: scale(1); filter: brightness(1); }
+    50% { transform: scale(1.2); filter: brightness(1.5) drop-shadow(0 0 15px currentColor); }
+    100% { transform: scale(1); filter: brightness(1); }
+}
+
+/* Dim non-winning tokens */
+.board-finished .cell:not(.winner) {
+    opacity: 0.3;
+    filter: grayscale(0.5);
+}
+
+.turn-pulse {
+    animation: pulseText 2s infinite;
+}
+
+@keyframes pulseText {
+    0% { opacity: 0.6; }
+    50% { opacity: 1; text-shadow: 0 0 10px rgba(255,255,255,0.5); }
+    100% { opacity: 0.6; }
+}
+
+/* Marquee Animation */
+.animate-marquee {
+    animation: marquee 20s linear infinite;
+    /* Ensure content is wide enough to scroll cleanly */
+    min-width: 200%;
+}
+
+@keyframes marquee {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        /* 4 identical blocks. Move left by exactly 25% (one block width) to loop seamlessly */
+        transform: translateX(-25%);
+    }
+}
+
+@keyframes bounce-x {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(-40%); }
+}
