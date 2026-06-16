@@ -565,28 +565,6 @@ const videoContainer = document.getElementById('video-hover-container');
 const hoverVideo = document.getElementById('hover-video');
 
 if (videoContainer && hoverVideo) {
-    let isPlaying = false;
-
-    // Play the video manually on hover
-    videoContainer.addEventListener('mouseenter', () => {
-        if (!isPlaying) {
-            isPlaying = true;
-            // The browser might block play() if it's not loaded, ensure we catch promise rejections
-            const playPromise = hoverVideo.play();
-            if (playPromise !== undefined) {
-                playPromise.catch(error => {
-                    console.log("Video playback failed:", error);
-                    isPlaying = false;
-                });
-            }
-        }
-    });
-
-    hoverVideo.addEventListener('ended', () => {
-        isPlaying = false;
-        hoverVideo.currentTime = 0; // Reset for next hover
-    });
-    
-    // Explicitly load the video so the first frame is ready
+    // Explicitly load the video so the first frame is ready (acts as a static image)
     hoverVideo.load();
 }
