@@ -1,4 +1,6 @@
 /* style.css */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap');
+
 @font-face {
     font-family: 'Ciclope Black';
     src: url('../assets/fonts/CiclopeBlack-Black.ttf') format('truetype');
@@ -12,8 +14,6 @@
     font-weight: normal;
     font-style: normal;
 }
-
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap');
 
 body {
     font-family: 'Ciclope Black', 'Outfit', sans-serif;
