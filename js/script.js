@@ -551,7 +551,14 @@ function drawWinLine(combo) {
 }
 
 // Start game when page loads
-init();
+if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(() => {
+        init();
+    });
+} else {
+    // Fallback if document.fonts is not supported
+    window.addEventListener('load', init);
+}
 
 // --- Video Hover Logic ---
 const videoContainer = document.getElementById('video-hover-container');
