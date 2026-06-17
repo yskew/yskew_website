@@ -267,10 +267,10 @@ function startLoadingScreen() {
     // Fade in the text just in case it was hidden to prevent FOUT
     gsap.to('#loading-content', { opacity: 1, duration: 0.5 });
 
-    // Run the GSAP counter animation over 3.5 seconds to buy time for the background image
+    // Run the GSAP counter animation over 7 seconds to buy time for the background image
     gsap.to(counterObj, {
         val: 100,
-        duration: 3.5,
+        duration: 7,
         ease: "power2.inOut",
         onUpdate: function() {
             if (counterEl) {
