@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yskew</title>
+    <link rel="icon" type="image/svg+xml" href="/assets/yskew_logo_white-BMzkFwZu.svg">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Ciclope Black', 'Outfit', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script type="module" crossorigin src="/assets/index-BTOxBbBk.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-B_o2eflI.css">
+</head>
+<body class="bg-[#050505] text-white h-screen w-screen overflow-hidden font-sans selection:bg-red-500/30">
+
+    <!-- Top Right Spinning Menu Button -->
+    <div id="top-menu-btn" class="fixed top-4 right-4 md:top-8 md:right-8 z-[220] w-16 h-16 md:w-28 md:h-28 cursor-pointer transition-transform duration-300 hover:scale-110 rounded-full group">
+        <img src="/assets/Menu-C3BQss4E.png" alt="Menu" class="w-full h-full object-contain animate-spin-slow">
+    </div>
+
+    <!-- Bottom Left GitHub Icon -->
+    <a href="https://github.com/yskew" target="_blank" rel="noopener noreferrer" id="bottom-left-github-btn" class="fixed bottom-4 left-4 md:bottom-8 md:left-8 z-[200] w-12 h-12 md:w-20 md:h-20 cursor-pointer transition-all duration-300 hover:scale-110 hover:-rotate-12 rounded-full group opacity-100">
+        <img src="/assets/github_icon-Cpoigztl.png" alt="GitHub" class="w-full h-full object-contain drop-shadow-[0_0_10px_rgba(255,255,255,0.2)] group-hover:drop-shadow-[0_0_20px_rgba(181,16,16,0.5)]">
+    </a>
+
+    <!-- Full-Screen Menu Overlay -->
+    <div id="full-screen-menu" class="fixed inset-0 z-[210] bg-black/80 flex flex-col items-center justify-center opacity-0 pointer-events-none transition-opacity duration-500 backdrop-blur-sm px-4">
+        <div class="flex flex-col items-center space-y-8 md:space-y-12 text-white text-3xl sm:text-4xl md:text-6xl tracking-widest text-center" style="font-family: 'PaintCans', 'Ciclope Black', sans-serif;">
+            <button id="menu-learn-btn" class="hover:text-[#AC2A12] transition-colors duration-300 drop-shadow-md">Learn Something New</button>
+            <a href="https://github.com/yskew" target="_blank" rel="noopener noreferrer" class="hover:text-[#AC2A12] transition-colors duration-300 drop-shadow-md">Github</a>
+            <a href="https://www.linkedin.com/company/yskew/?viewAsMember=true" target="_blank" rel="noopener noreferrer" class="hover:text-[#AC2A12] transition-colors duration-300 drop-shadow-md">Linkedin</a>
+        </div>
+    </div>
+
+<!-- NEW: Landing Page -->
+    <div id="landing-page" class="absolute inset-0 z-[100] flex flex-col items-center justify-center bg-[#050505] bg-cover bg-center bg-no-repeat transition-opacity duration-1000 overflow-hidden" style="background-image: url('/assets/LandingPageBackground-DS_XzSVm.png');">
+        <!-- Optional darkening overlay removed per request -->
+
+        <!-- Diagonal Marquee (Top Right) -->
+        <div class="absolute top-[5%] -right-[30%] w-[150vw] sm:w-[600px] md:top-[10%] md:-right-[10%] md:w-[1000px] bg-[#AC2A12]/85 overflow-hidden flex items-center h-8 sm:h-12 md:h-16 z-50 transform rotate-45 shadow-[0_0_30px_rgba(0,0,0,0.8)] pointer-events-none">
+            <div class="flex whitespace-nowrap animate-marquee items-center text-gray-300 font-sans text-xl sm:text-2xl md:text-4xl tracking-wide uppercase pt-1">
+                <!-- First set -->
+                <span class="mx-6">YSKEW</span>
+                <span class="mx-2">///</span>
+                <span class="mx-6">BEYOND PARALLEL ASSUMPTIONS</span>
+                <img src="data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='104.5%2019.5%20482.0%20577.5'%3e%3cpath%20fill='%23ffffff'%20fill-rule='evenodd'%20d='M%20346.0%2035.5%20L%20348.5%2041.0%20L%20349.5%2058.0%20L%20352.5%2072.0%20L%20356.5%2081.0%20L%20365.0%2087.5%20L%20380.0%2091.5%20L%20401.0%2093.5%20L%20403.5%2095.0%20L%20403.5%2097.0%20L%20401.0%2098.5%20L%20373.0%20101.5%20L%20362.0%20105.5%20L%20356.5%20110.0%20L%20341.5%20145.0%20L%20314.5%20185.0%20L%20305.5%20203.0%20L%20302.5%20214.0%20L%20302.5%20230.0%20L%20304.5%20239.0%20L%20312.5%20255.0%20L%20333.5%20278.0%20L%20325.0%20277.5%20L%20321.0%20274.5%20L%20305.5%20255.0%20L%20297.5%20237.0%20L%20296.5%20211.0%20L%20301.5%20195.0%20L%20307.5%20183.0%20L%20329.5%20146.0%20L%20334.5%20131.0%20L%20335.5%20116.0%20L%20333.5%20110.0%20L%20324.0%20103.5%20L%20313.0%20100.5%20L%20291.0%2098.5%20L%20288.5%2097.0%20L%20288.5%2095.0%20L%20325.0%2088.5%20L%20334.5%2082.0%20L%20340.5%2065.0%20L%20343.5%2038.0%20L%20345.5%2036.0%20Z%20M%20201.0%20155.5%20L%20202.5%20160.0%20L%20192.5%20181.0%20L%20189.5%20192.0%20L%20189.5%20202.0%20L%20193.5%20210.0%20L%20214.0%20227.5%20L%20270.0%20261.5%20L%20305.0%20278.5%20L%20333.0%20287.5%20L%20357.0%20287.5%20L%20391.0%20276.5%20L%20452.0%20243.5%20L%20490.0%20217.5%20L%20499.5%20207.0%20L%20501.5%20195.0%20L%20499.5%20185.0%20L%20488.5%20159.0%20L%20489.0%20156.5%20L%20493.5%20159.0%20L%20508.5%20180.0%20L%20522.0%20190.5%20L%20537.0%20190.5%20L%20567.0%20177.5%20L%20570.5%20179.0%20L%20546.0%20198.5%20L%20535.5%20213.0%20L%20536.5%20228.0%20L%20548.5%20257.0%20L%20548.0%20259.5%20L%20542.5%20256.0%20L%20529.5%20237.0%20L%20519.0%20227.5%20L%20513.0%20225.5%20L%20497.0%20227.5%20L%20452.0%20249.5%20L%20410.0%20275.5%20L%20386.0%20293.5%20L%20372.5%20307.0%20L%20361.5%20323.0%20L%20353.5%20348.0%20L%20349.5%20380.0%20L%20348.5%20454.0%20L%20352.5%20497.0%20L%20356.5%20507.0%20L%20365.0%20513.5%20L%20383.0%20517.5%20L%20401.0%20518.5%20L%20403.5%20521.0%20L%20402.0%20522.5%20L%20368.0%20528.5%20L%20361.0%20531.5%20L%20355.5%20537.0%20L%20350.5%20552.0%20L%20346.5%20581.0%20L%20343.5%20580.0%20L%20341.5%20557.0%20L%20338.5%20544.0%20L%20334.5%20536.0%20L%20330.0%20531.5%20L%20323.0%20528.5%20L%20293.0%20523.5%20L%20287.5%20521.0%20L%20290.0%20518.5%20L%20312.0%20516.5%20L%20329.0%20511.5%20L%20334.5%20506.0%20L%20339.5%20491.0%20L%20342.5%20459.0%20L%20341.5%20380.0%20L%20336.5%20343.0%20L%20330.5%20325.0%20L%20325.5%20316.0%20L%20305.0%20293.5%20L%20281.0%20275.5%20L%20233.0%20246.5%20L%20193.0%20227.5%20L%20173.0%20227.5%20L%20163.5%20235.0%20L%20147.5%20257.0%20L%20145.0%20259.5%20L%20142.5%20259.0%20L%20153.5%20231.0%20L%20155.5%20223.0%20L%20154.5%20211.0%20L%20145.0%20198.5%20L%20122.0%20181.5%20L%20120.5%20178.0%20L%20127.0%20178.5%20L%20155.0%20190.5%20L%20169.0%20190.5%20L%20182.5%20180.0%20L%20200.5%20156.0%20Z%20M%20401.0%20309.5%20L%20413.0%20309.5%20L%20427.0%20312.5%20L%20438.0%20317.5%20L%20448.0%20324.5%20L%20464.5%20344.0%20L%20478.5%20368.0%20L%20487.5%20380.0%20L%20501.0%20393.5%20L%20510.0%20398.5%20L%20519.0%20399.5%20L%20528.0%20395.5%20L%20552.0%20370.5%20L%20554.0%20370.5%20L%20554.5%20373.0%20L%20538.5%20403.0%20L%20537.5%20418.0%20L%20542.5%20428.0%20L%20565.5%20452.0%20L%20562.0%20453.5%20L%20532.0%20436.5%20L%20519.0%20435.5%20L%20504.0%20444.5%20L%20483.0%20464.5%20L%20482.5%20461.0%20L%20484.5%20457.0%20L%20499.5%20432.0%20L%20500.5%20418.0%20L%20498.5%20413.0%20L%20481.5%20390.0%20L%20461.5%20352.0%20L%20453.5%20340.0%20L%20439.0%20325.5%20L%20419.0%20316.5%20L%20393.0%20316.5%20L%20376.0%20321.5%20L%20373.5%20320.0%20L%20380.0%20313.5%20L%20400.5%20310.0%20Z%20M%20326.0%20338.5%20L%20329.5%20346.0%20L%20329.5%20352.0%20L%20326.5%20361.0%20L%20315.5%20380.0%20L%20299.0%20392.5%20L%20289.0%20396.5%20L%20271.0%20399.5%20L%20221.0%20400.5%20L%20203.0%20405.5%20L%20192.5%20413.0%20L%20189.5%20419.0%20L%20189.5%20428.0%20L%20201.5%20458.0%20L%20202.0%20463.5%20L%20196.5%20459.0%20L%20181.5%20439.0%20L%20169.0%20429.5%20L%20154.0%20429.5%20L%20126.0%20441.5%20L%20122.0%20442.5%20L%20120.5%20441.0%20L%20123.0%20437.5%20L%20148.0%20418.5%20L%20153.5%20412.0%20L%20156.5%20405.0%20L%20155.5%20392.0%20L%20143.5%20361.0%20L%20146.0%20360.5%20L%20148.5%20363.0%20L%20154.5%20373.0%20L%20170.0%20390.5%20L%20179.0%20394.5%20L%20212.0%20390.5%20L%20275.0%20392.5%20L%20292.0%20388.5%20L%20302.0%20383.5%20L%20311.5%20375.0%20L%20319.5%20362.0%20L%20325.5%20339.0%20Z'%3e%3c/path%3e%3c/svg%3e" alt="Logo" class="h-8 mx-6 inline-block">
+                
+                <!-- Duplicated for seamless loop -->
+                <span class="mx-6">YSKEW</span>
+                <span class="mx-2">///</span>
+                <span class="mx-6">BEYOND PARALLEL ASSUMPTIONS</span>
+                <img src="data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='104.5%2019.5%20482.0%20577.5'%3e%3cpath%20fill='%23ffffff'%20fill-rule='evenodd'%20d='M%20346.0%2035.5%20L%20348.5%2041.0%20L%20349.5%2058.0%20L%20352.5%2072.0%20L%20356.5%2081.0%20L%20365.0%2087.5%20L%20380.0%2091.5%20L%20401.0%2093.5%20L%20403.5%2095.0%20L%20403.5%2097.0%20L%20401.0%2098.5%20L%20373.0%20101.5%20L%20362.0%20105.5%20L%20356.5%20110.0%20L%20341.5%20145.0%20L%20314.5%20185.0%20L%20305.5%20203.0%20L%20302.5%20214.0%20L%20302.5%20230.0%20L%20304.5%20239.0%20L%20312.5%20255.0%20L%20333.5%20278.0%20L%20325.0%20277.5%20L%20321.0%20274.5%20L%20305.5%20255.0%20L%20297.5%20237.0%20L%20296.5%20211.0%20L%20301.5%20195.0%20L%20307.5%20183.0%20L%20329.5%20146.0%20L%20334.5%20131.0%20L%20335.5%20116.0%20L%20333.5%20110.0%20L%20324.0%20103.5%20L%20313.0%20100.5%20L%20291.0%2098.5%20L%20288.5%2097.0%20L%20288.5%2095.0%20L%20325.0%2088.5%20L%20334.5%2082.0%20L%20340.5%2065.0%20L%20343.5%2038.0%20L%20345.5%2036.0%20Z%20M%20201.0%20155.5%20L%20202.5%20160.0%20L%20192.5%20181.0%20L%20189.5%20192.0%20L%20189.5%20202.0%20L%20193.5%20210.0%20L%20214.0%20227.5%20L%20270.0%20261.5%20L%20305.0%20278.5%20L%20333.0%20287.5%20L%20357.0%20287.5%20L%20391.0%20276.5%20L%20452.0%20243.5%20L%20490.0%20217.5%20L%20499.5%20207.0%20L%20501.5%20195.0%20L%20499.5%20185.0%20L%20488.5%20159.0%20L%20489.0%20156.5%20L%20493.5%20159.0%20L%20508.5%20180.0%20L%20522.0%20190.5%20L%20537.0%20190.5%20L%20567.0%20177.5%20L%20570.5%20179.0%20L%20546.0%20198.5%20L%20535.5%20213.0%20L%20536.5%20228.0%20L%20548.5%20257.0%20L%20548.0%20259.5%20L%20542.5%20256.0%20L%20529.5%20237.0%20L%20519.0%20227.5%20L%20513.0%20225.5%20L%20497.0%20227.5%20L%20452.0%20249.5%20L%20410.0%20275.5%20L%20386.0%20293.5%20L%20372.5%20307.0%20L%20361.5%20323.0%20L%20353.5%20348.0%20L%20349.5%20380.0%20L%20348.5%20454.0%20L%20352.5%20497.0%20L%20356.5%20507.0%20L%20365.0%20513.5%20L%20383.0%20517.5%20L%20401.0%20518.5%20L%20403.5%20521.0%20L%20402.0%20522.5%20L%20368.0%20528.5%20L%20361.0%20531.5%20L%20355.5%20537.0%20L%20350.5%20552.0%20L%20346.5%20581.0%20L%20343.5%20580.0%20L%20341.5%20557.0%20L%20338.5%20544.0%20L%20334.5%20536.0%20L%20330.0%20531.5%20L%20323.0%20528.5%20L%20293.0%20523.5%20L%20287.5%20521.0%20L%20290.0%20518.5%20L%20312.0%20516.5%20L%20329.0%20511.5%20L%20334.5%20506.0%20L%20339.5%20491.0%20L%20342.5%20459.0%20L%20341.5%20380.0%20L%20336.5%20343.0%20L%20330.5%20325.0%20L%20325.5%20316.0%20L%20305.0%20293.5%20L%20281.0%20275.5%20L%20233.0%20246.5%20L%20193.0%20227.5%20L%20173.0%20227.5%20L%20163.5%20235.0%20L%20147.5%20257.0%20L%20145.0%20259.5%20L%20142.5%20259.0%20L%20153.5%20231.0%20L%20155.5%20223.0%20L%20154.5%20211.0%20L%20145.0%20198.5%20L%20122.0%20181.5%20L%20120.5%20178.0%20L%20127.0%20178.5%20L%20155.0%20190.5%20L%20169.0%20190.5%20L%20182.5%20180.0%20L%20200.5%20156.0%20Z%20M%20401.0%20309.5%20L%20413.0%20309.5%20L%20427.0%20312.5%20L%20438.0%20317.5%20L%20448.0%20324.5%20L%20464.5%20344.0%20L%20478.5%20368.0%20L%20487.5%20380.0%20L%20501.0%20393.5%20L%20510.0%20398.5%20L%20519.0%20399.5%20L%20528.0%20395.5%20L%20552.0%20370.5%20L%20554.0%20370.5%20L%20554.5%20373.0%20L%20538.5%20403.0%20L%20537.5%20418.0%20L%20542.5%20428.0%20L%20565.5%20452.0%20L%20562.0%20453.5%20L%20532.0%20436.5%20L%20519.0%20435.5%20L%20504.0%20444.5%20L%20483.0%20464.5%20L%20482.5%20461.0%20L%20484.5%20457.0%20L%20499.5%20432.0%20L%20500.5%20418.0%20L%20498.5%20413.0%20L%20481.5%20390.0%20L%20461.5%20352.0%20L%20453.5%20340.0%20L%20439.0%20325.5%20L%20419.0%20316.5%20L%20393.0%20316.5%20L%20376.0%20321.5%20L%20373.5%20320.0%20L%20380.0%20313.5%20L%20400.5%20310.0%20Z%20M%20326.0%20338.5%20L%20329.5%20346.0%20L%20329.5%20352.0%20L%20326.5%20361.0%20L%20315.5%20380.0%20L%20299.0%20392.5%20L%20289.0%20396.5%20L%20271.0%20399.5%20L%20221.0%20400.5%20L%20203.0%20405.5%20L%20192.5%20413.0%20L%20189.5%20419.0%20L%20189.5%20428.0%20L%20201.5%20458.0%20L%20202.0%20463.5%20L%20196.5%20459.0%20L%20181.5%20439.0%20L%20169.0%20429.5%20L%20154.0%20429.5%20L%20126.0%20441.5%20L%20122.0%20442.5%20L%20120.5%20441.0%20L%20123.0%20437.5%20L%20148.0%20418.5%20L%20153.5%20412.0%20L%20156.5%20405.0%20L%20155.5%20392.0%20L%20143.5%20361.0%20L%20146.0%20360.5%20L%20148.5%20363.0%20L%20154.5%20373.0%20L%20170.0%20390.5%20L%20179.0%20394.5%20L%20212.0%20390.5%20L%20275.0%20392.5%20L%20292.0%20388.5%20L%20302.0%20383.5%20L%20311.5%20375.0%20L%20319.5%20362.0%20L%20325.5%20339.0%20Z'%3e%3c/path%3e%3c/svg%3e" alt="Logo" class="h-8 mx-6 inline-block">
+
+                <!-- Third set -->
+                <span class="mx-6">YSKEW</span>
+                <span class="mx-2">///</span>
+                <span class="mx-6">BEYOND PARALLEL ASSUMPTIONS</span>
+                <img src="data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='104.5%2019.5%20482.0%20577.5'%3e%3cpath%20fill='%23ffffff'%20fill-rule='evenodd'%20d='M%20346.0%2035.5%20L%20348.5%2041.0%20L%20349.5%2058.0%20L%20352.5%2072.0%20L%20356.5%2081.0%20L%20365.0%2087.5%20L%20380.0%2091.5%20L%20401.0%2093.5%20L%20403.5%2095.0%20L%20403.5%2097.0%20L%20401.0%2098.5%20L%20373.0%20101.5%20L%20362.0%20105.5%20L%20356.5%20110.0%20L%20341.5%20145.0%20L%20314.5%20185.0%20L%20305.5%20203.0%20L%20302.5%20214.0%20L%20302.5%20230.0%20L%20304.5%20239.0%20L%20312.5%20255.0%20L%20333.5%20278.0%20L%20325.0%20277.5%20L%20321.0%20274.5%20L%20305.5%20255.0%20L%20297.5%20237.0%20L%20296.5%20211.0%20L%20301.5%20195.0%20L%20307.5%20183.0%20L%20329.5%20146.0%20L%20334.5%20131.0%20L%20335.5%20116.0%20L%20333.5%20110.0%20L%20324.0%20103.5%20L%20313.0%20100.5%20L%20291.0%2098.5%20L%20288.5%2097.0%20L%20288.5%2095.0%20L%20325.0%2088.5%20L%20334.5%2082.0%20L%20340.5%2065.0%20L%20343.5%2038.0%20L%20345.5%2036.0%20Z%20M%20201.0%20155.5%20L%20202.5%20160.0%20L%20192.5%20181.0%20L%20189.5%20192.0%20L%20189.5%20202.0%20L%20193.5%20210.0%20L%20214.0%20227.5%20L%20270.0%20261.5%20L%20305.0%20278.5%20L%20333.0%20287.5%20L%20357.0%20287.5%20L%20391.0%20276.5%20L%20452.0%20243.5%20L%20490.0%20217.5%20L%20499.5%20207.0%20L%20501.5%20195.0%20L%20499.5%20185.0%20L%20488.5%20159.0%20L%20489.0%20156.5%20L%20493.5%20159.0%20L%20508.5%20180.0%20L%20522.0%20190.5%20L%20537.0%20190.5%20L%20567.0%20177.5%20L%20570.5%20179.0%20L%20546.0%20198.5%20L%20535.5%20213.0%20L%20536.5%20228.0%20L%20548.5%20257.0%20L%20548.0%20259.5%20L%20542.5%20256.0%20L%20529.5%20237.0%20L%20519.0%20227.5%20L%20513.0%20225.5%20L%20497.0%20227.5%20L%20452.0%20249.5%20L%20410.0%20275.5%20L%20386.0%20293.5%20L%20372.5%20307.0%20L%20361.5%20323.0%20L%20353.5%20348.0%20L%20349.5%20380.0%20L%20348.5%20454.0%20L%20352.5%20497.0%20L%20356.5%20507.0%20L%20365.0%20513.5%20L%20383.0%20517.5%20L%20401.0%20518.5%20L%20403.5%20521.0%20L%20402.0%20522.5%20L%20368.0%20528.5%20L%20361.0%20531.5%20L%20355.5%20537.0%20L%20350.5%20552.0%20L%20346.5%20581.0%20L%20343.5%20580.0%20L%20341.5%20557.0%20L%20338.5%20544.0%20L%20334.5%20536.0%20L%20330.0%20531.5%20L%20323.0%20528.5%20L%20293.0%20523.5%20L%20287.5%20521.0%20L%20290.0%20518.5%20L%20312.0%20516.5%20L%20329.0%20511.5%20L%20334.5%20506.0%20L%20339.5%20491.0%20L%20342.5%20459.0%20L%20341.5%20380.0%20L%20336.5%20343.0%20L%20330.5%20325.0%20L%20325.5%20316.0%20L%20305.0%20293.5%20L%20281.0%20275.5%20L%20233.0%20246.5%20L%20193.0%20227.5%20L%20173.0%20227.5%20L%20163.5%20235.0%20L%20147.5%20257.0%20L%20145.0%20259.5%20L%20142.5%20259.0%20L%20153.5%20231.0%20L%20155.5%20223.0%20L%20154.5%20211.0%20L%20145.0%20198.5%20L%20122.0%20181.5%20L%20120.5%20178.0%20L%20127.0%20178.5%20L%20155.0%20190.5%20L%20169.0%20190.5%20L%20182.5%20180.0%20L%20200.5%20156.0%20Z%20M%20401.0%20309.5%20L%20413.0%20309.5%20L%20427.0%20312.5%20L%20438.0%20317.5%20L%20448.0%20324.5%20L%20464.5%20344.0%20L%20478.5%20368.0%20L%20487.5%20380.0%20L%20501.0%20393.5%20L%20510.0%20398.5%20L%20519.0%20399.5%20L%20528.0%20395.5%20L%20552.0%20370.5%20L%20554.0%20370.5%20L%20554.5%20373.0%20L%20538.5%20403.0%20L%20537.5%20418.0%20L%20542.5%20428.0%20L%20565.5%20452.0%20L%20562.0%20453.5%20L%20532.0%20436.5%20L%20519.0%20435.5%20L%20504.0%20444.5%20L%20483.0%20464.5%20L%20482.5%20461.0%20L%20484.5%20457.0%20L%20499.5%20432.0%20L%20500.5%20418.0%20L%20498.5%20413.0%20L%20481.5%20390.0%20L%20461.5%20352.0%20L%20453.5%20340.0%20L%20439.0%20325.5%20L%20419.0%20316.5%20L%20393.0%20316.5%20L%20376.0%20321.5%20L%20373.5%20320.0%20L%20380.0%20313.5%20L%20400.5%20310.0%20Z%20M%20326.0%20338.5%20L%20329.5%20346.0%20L%20329.5%20352.0%20L%20326.5%20361.0%20L%20315.5%20380.0%20L%20299.0%20392.5%20L%20289.0%20396.5%20L%20271.0%20399.5%20L%20221.0%20400.5%20L%20203.0%20405.5%20L%20192.5%20413.0%20L%20189.5%20419.0%20L%20189.5%20428.0%20L%20201.5%20458.0%20L%20202.0%20463.5%20L%20196.5%20459.0%20L%20181.5%20439.0%20L%20169.0%20429.5%20L%20154.0%20429.5%20L%20126.0%20441.5%20L%20122.0%20442.5%20L%20120.5%20441.0%20L%20123.0%20437.5%20L%20148.0%20418.5%20L%20153.5%20412.0%20L%20156.5%20405.0%20L%20155.5%20392.0%20L%20143.5%20361.0%20L%20146.0%20360.5%20L%20148.5%20363.0%20L%20154.5%20373.0%20L%20170.0%20390.5%20L%20179.0%20394.5%20L%20212.0%20390.5%20L%20275.0%20392.5%20L%20292.0%20388.5%20L%20302.0%20383.5%20L%20311.5%20375.0%20L%20319.5%20362.0%20L%20325.5%20339.0%20Z'%3e%3c/path%3e%3c/svg%3e" alt="Logo" class="h-8 mx-6 inline-block">
+                
+                <!-- Fourth set -->
+                <span class="mx-6">YSKEW</span>
+                <span class="mx-2">///</span>
+                <span class="mx-6">BEYOND PARALLEL ASSUMPTIONS</span>
+                <img src="data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='104.5%2019.5%20482.0%20577.5'%3e%3cpath%20fill='%23ffffff'%20fill-rule='evenodd'%20d='M%20346.0%2035.5%20L%20348.5%2041.0%20L%20349.5%2058.0%20L%20352.5%2072.0%20L%20356.5%2081.0%20L%20365.0%2087.5%20L%20380.0%2091.5%20L%20401.0%2093.5%20L%20403.5%2095.0%20L%20403.5%2097.0%20L%20401.0%2098.5%20L%20373.0%20101.5%20L%20362.0%20105.5%20L%20356.5%20110.0%20L%20341.5%20145.0%20L%20314.5%20185.0%20L%20305.5%20203.0%20L%20302.5%20214.0%20L%20302.5%20230.0%20L%20304.5%20239.0%20L%20312.5%20255.0%20L%20333.5%20278.0%20L%20325.0%20277.5%20L%20321.0%20274.5%20L%20305.5%20255.0%20L%20297.5%20237.0%20L%20296.5%20211.0%20L%20301.5%20195.0%20L%20307.5%20183.0%20L%20329.5%20146.0%20L%20334.5%20131.0%20L%20335.5%20116.0%20L%20333.5%20110.0%20L%20324.0%20103.5%20L%20313.0%20100.5%20L%20291.0%2098.5%20L%20288.5%2097.0%20L%20288.5%2095.0%20L%20325.0%2088.5%20L%20334.5%2082.0%20L%20340.5%2065.0%20L%20343.5%2038.0%20L%20345.5%2036.0%20Z%20M%20201.0%20155.5%20L%20202.5%20160.0%20L%20192.5%20181.0%20L%20189.5%20192.0%20L%20189.5%20202.0%20L%20193.5%20210.0%20L%20214.0%20227.5%20L%20270.0%20261.5%20L%20305.0%20278.5%20L%20333.0%20287.5%20L%20357.0%20287.5%20L%20391.0%20276.5%20L%20452.0%20243.5%20L%20490.0%20217.5%20L%20499.5%20207.0%20L%20501.5%20195.0%20L%20499.5%20185.0%20L%20488.5%20159.0%20L%20489.0%20156.5%20L%20493.5%20159.0%20L%20508.5%20180.0%20L%20522.0%20190.5%20L%20537.0%20190.5%20L%20567.0%20177.5%20L%20570.5%20179.0%20L%20546.0%20198.5%20L%20535.5%20213.0%20L%20536.5%20228.0%20L%20548.5%20257.0%20L%20548.0%20259.5%20L%20542.5%20256.0%20L%20529.5%20237.0%20L%20519.0%20227.5%20L%20513.0%20225.5%20L%20497.0%20227.5%20L%20452.0%20249.5%20L%20410.0%20275.5%20L%20386.0%20293.5%20L%20372.5%20307.0%20L%20361.5%20323.0%20L%20353.5%20348.0%20L%20349.5%20380.0%20L%20348.5%20454.0%20L%20352.5%20497.0%20L%20356.5%20507.0%20L%20365.0%20513.5%20L%20383.0%20517.5%20L%20401.0%20518.5%20L%20403.5%20521.0%20L%20402.0%20522.5%20L%20368.0%20528.5%20L%20361.0%20531.5%20L%20355.5%20537.0%20L%20350.5%20552.0%20L%20346.5%20581.0%20L%20343.5%20580.0%20L%20341.5%20557.0%20L%20338.5%20544.0%20L%20334.5%20536.0%20L%20330.0%20531.5%20L%20323.0%20528.5%20L%20293.0%20523.5%20L%20287.5%20521.0%20L%20290.0%20518.5%20L%20312.0%20516.5%20L%20329.0%20511.5%20L%20334.5%20506.0%20L%20339.5%20491.0%20L%20342.5%20459.0%20L%20341.5%20380.0%20L%20336.5%20343.0%20L%20330.5%20325.0%20L%20325.5%20316.0%20L%20305.0%20293.5%20L%20281.0%20275.5%20L%20233.0%20246.5%20L%20193.0%20227.5%20L%20173.0%20227.5%20L%20163.5%20235.0%20L%20147.5%20257.0%20L%20145.0%20259.5%20L%20142.5%20259.0%20L%20153.5%20231.0%20L%20155.5%20223.0%20L%20154.5%20211.0%20L%20145.0%20198.5%20L%20122.0%20181.5%20L%20120.5%20178.0%20L%20127.0%20178.5%20L%20155.0%20190.5%20L%20169.0%20190.5%20L%20182.5%20180.0%20L%20200.5%20156.0%20Z%20M%20401.0%20309.5%20L%20413.0%20309.5%20L%20427.0%20312.5%20L%20438.0%20317.5%20L%20448.0%20324.5%20L%20464.5%20344.0%20L%20478.5%20368.0%20L%20487.5%20380.0%20L%20501.0%20393.5%20L%20510.0%20398.5%20L%20519.0%20399.5%20L%20528.0%20395.5%20L%20552.0%20370.5%20L%20554.0%20370.5%20L%20554.5%20373.0%20L%20538.5%20403.0%20L%20537.5%20418.0%20L%20542.5%20428.0%20L%20565.5%20452.0%20L%20562.0%20453.5%20L%20532.0%20436.5%20L%20519.0%20435.5%20L%20504.0%20444.5%20L%20483.0%20464.5%20L%20482.5%20461.0%20L%20484.5%20457.0%20L%20499.5%20432.0%20L%20500.5%20418.0%20L%20498.5%20413.0%20L%20481.5%20390.0%20L%20461.5%20352.0%20L%20453.5%20340.0%20L%20439.0%20325.5%20L%20419.0%20316.5%20L%20393.0%20316.5%20L%20376.0%20321.5%20L%20373.5%20320.0%20L%20380.0%20313.5%20L%20400.5%20310.0%20Z%20M%20326.0%20338.5%20L%20329.5%20346.0%20L%20329.5%20352.0%20L%20326.5%20361.0%20L%20315.5%20380.0%20L%20299.0%20392.5%20L%20289.0%20396.5%20L%20271.0%20399.5%20L%20221.0%20400.5%20L%20203.0%20405.5%20L%20192.5%20413.0%20L%20189.5%20419.0%20L%20189.5%20428.0%20L%20201.5%20458.0%20L%20202.0%20463.5%20L%20196.5%20459.0%20L%20181.5%20439.0%20L%20169.0%20429.5%20L%20154.0%20429.5%20L%20126.0%20441.5%20L%20122.0%20442.5%20L%20120.5%20441.0%20L%20123.0%20437.5%20L%20148.0%20418.5%20L%20153.5%20412.0%20L%20156.5%20405.0%20L%20155.5%20392.0%20L%20143.5%20361.0%20L%20146.0%20360.5%20L%20148.5%20363.0%20L%20154.5%20373.0%20L%20170.0%20390.5%20L%20179.0%20394.5%20L%20212.0%20390.5%20L%20275.0%20392.5%20L%20292.0%20388.5%20L%20302.0%20383.5%20L%20311.5%20375.0%20L%20319.5%20362.0%20L%20325.5%20339.0%20Z'%3e%3c/path%3e%3c/svg%3e" alt="Logo" class="h-8 mx-6 inline-block">
+            </div>
+        </div>
+        
+        <div class="relative z-10 flex flex-col items-center text-center px-4 font-sans mt-10 md:mt-20">
+            <h1 id="landing-title" class="text-[4rem] sm:text-[6rem] md:text-[10rem] font-bold tracking-widest text-white mb-2 drop-shadow-xl whitespace-nowrap" style="font-family: 'PaintCans', 'Ciclope Black', sans-serif;">Yskew</h1>
+            
+            <div id="landing-subtitle" class="flex flex-col items-center mt-2 md:mt-4">
+                <div class="text-xl sm:text-3xl md:text-5xl font-bold tracking-wide drop-shadow-md text-white min-h-[40px] md:min-h-[60px] flex items-center justify-center px-2" style="font-family: 'PaintCans', 'Ciclope Black', sans-serif;">
+                    <span id="landing-text-content" style="-webkit-text-stroke: 0.25px #000;"></span>
+                    <span id="landing-text-cursor" class="ml-1 hidden font-light" style="-webkit-text-stroke: 0px;">|</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Right Button and Arrow -->
+        <div id="landing-bottom-right" class="absolute bottom-6 right-6 md:bottom-12 md:right-12 flex items-center justify-end opacity-0 pointer-events-none z-20">
+            <!-- Arrow pointing right towards button (Comical/Bouncing) -->
+            <svg id="landing-arrow" class="w-8 h-8 mr-2 sm:w-10 sm:h-10 sm:mr-2 md:w-16 md:h-16 text-white md:mr-4 animate-bounce" style="animation: bounce-x 1s cubic-bezier(0.8, 0, 1, 1) infinite;" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+            </svg>
+            
+            <button id="play-game-btn" class="group relative transition-all duration-300 hover:scale-105 cursor-pointer bg-transparent border-none p-0 outline-none">
+                <img src="/assets/learn_something_new-CXf-scph.png" alt="Learn Something New" class="h-10 sm:h-16 md:h-20 w-auto drop-shadow-[0_0_10px_rgba(181,16,16,0.4)] group-hover:drop-shadow-[0_0_25px_rgba(181,16,16,0.8)] transition-all duration-300">
+            </button>
+        </div>
+    </div>
+
+    <div class="flex h-full w-full">
+        <!-- Left Side: Tilted Video -->
+        <div class="w-1/2 hidden lg:flex h-full items-center justify-center relative perspective-1000 z-10 pl-20 pb-20 mix-blend-screen">
+            <div id="video-hover-container" class="video-container transform -rotate-12 transition-transform duration-500 hover:-rotate-6 hover:scale-105 cursor-pointer">
+                <video 
+                    id="hover-video"
+                    muted 
+                    playsinline 
+                    preload="auto"
+                    class="w-full max-w-[800px] h-auto object-cover"
+                >
+                    <source src="/assets/YskewlogoVideo-DE3YDlZj.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </div>
+
+        <!-- Game Board & Intro (Right Full Screen) -->
+        <div class="w-full lg:w-1/2 h-full flex flex-col justify-center items-center relative perspective-1000 bg-transparent pb-[10vh] md:pb-[20vh] px-4 lg:px-0 lg:pr-20">
+            
+            <!-- React Bits TextType Container (Vanilla Port) -->
+            <div id="intro-container" class="absolute inset-0 flex items-center justify-center z-50 transition-opacity duration-1000">
+                <div class="text-3xl sm:text-5xl lg:text-6xl font-light text-center px-4 md:px-12 tracking-wide leading-relaxed max-w-2xl min-h-[200px] flex items-center justify-center">
+                    <div>
+                        <span id="text-type-content" class="text-white"></span>
+                        <span id="text-type-cursor" class="text-white ml-1 inline-block">|</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Game Container (Initially Hidden) -->
+            <div id="game-container" class="absolute inset-0 flex flex-col justify-center items-center opacity-0 pointer-events-none scale-95 transition-all duration-1000 z-10 mb-[10vh] md:mb-[20vh]">
+
+                <!-- Game UI Wrapper -->
+                <div class="relative w-full max-w-lg aspect-square flex items-center justify-center scale-90 lg:scale-100">
+                    <!-- Board -->
+                    <div class="game-board-container relative">
+                        <div id="board" class="grid grid-cols-3 relative z-10 p-4">
+                            <!-- Cells generated by JS -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Score / Status Area -->
+                <div class="absolute bottom-6 md:bottom-12 flex items-end space-x-6 md:space-x-12 text-xl md:text-3xl font-bold tracking-widest uppercase">
+                    <div class="flex items-center text-white transition-transform duration-300 hover:scale-110">
+                        <div class="w-6 h-6 mr-2 md:w-10 md:h-10 md:mr-4 svg-icon red-icon bg-white rounded-md p-1" id="icon-player-score"></div>
+                        <span id="score-player">0</span>
+                    </div>
+                    <div class="text-white text-lg md:text-2xl pb-1 opacity-80">
+                        DRAW - <span id="score-draw">0</span>
+                    </div>
+                    <div class="flex items-center text-white transition-transform duration-300 hover:scale-110">
+                        <div class="w-6 h-6 mr-2 md:w-10 md:h-10 md:mr-4 svg-icon blue-icon bg-white rounded-md p-1" id="icon-ai-score"></div>
+                        <span id="score-ai">0</span>
+                    </div>
+                </div>
+                
+            </div>
+
+            <!-- Secret Container (Initially Hidden) -->
+            <div id="secret-container" class="absolute inset-0 flex flex-col justify-center items-center opacity-0 pointer-events-none transition-opacity duration-1000 z-20 mb-[10vh] md:mb-[20vh] px-4 md:px-8">
+                <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-8 text-[#B51010] uppercase tracking-wider text-center" style="font-family: 'Ciclope Black', sans-serif;">The Secret Blueprint</h2>
+                <div class="text-xs sm:text-sm md:text-base lg:text-xl font-light space-y-3 md:space-y-6 text-left max-w-xl leading-relaxed bg-black/40 p-4 md:p-8 rounded-xl border border-white/10 backdrop-blur-sm shadow-2xl">
+                    <p><strong class="text-white font-bold tracking-wide">If you go first:</strong> Take a corner. Next, claim another corner to create a "fork" (two ways to win at once), forcing a guaranteed victory.</p>
+                    <p><strong class="text-white font-bold tracking-wide">If you go second:</strong> You are playing for a draw. If they take a corner, you must take the center immediately to block their trap.</p>
+                    <div class="w-full h-px bg-white/20 my-2 md:my-4"></div>
+                    <p class="text-gray-300 font-medium italic">Bottom Line: First player attacks the corners; second player survives by holding the center.</p>
+                </div>
+                <button id="play-again-btn" class="mt-4 md:mt-10 group relative px-6 py-2 md:px-8 md:py-3 bg-[#B51010] text-white text-base md:text-xl tracking-widest uppercase overflow-hidden rounded-md transition-all duration-300 hover:scale-105 hover:shadow-[0_0_30px_rgba(181,16,16,0.6)] border-4 border-black" style="font-family: 'Ciclope Black', sans-serif;">
+                    <span class="relative z-10 drop-shadow-md">Play Again</span>
+                    <div class="absolute inset-0 h-full w-0 bg-white/20 transition-all duration-300 ease-out group-hover:w-full"></div>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scrolling Footer Marquee -->
+    <div id="game-footer-marquee" class="fixed bottom-[5%] md:bottom-[10%] left-0 w-full bg-[#C6C6C6] overflow-hidden flex items-center h-12 md:h-16 z-50 opacity-0 pointer-events-none transition-opacity duration-1000">
+        <div class="flex whitespace-nowrap animate-marquee items-center text-black font-sans text-2xl md:text-4xl tracking-wide uppercase pt-1">
+            <!-- First set -->
+            <span class="mx-6">YSKEW</span>
+            <span class="mx-2">///</span>
+            <span class="mx-6">BEYOND PARALLEL ASSUMPTIONS</span>
+                <img src="/assets/yskew_logo_rolling_text-M9FCKdQD.png" alt="Logo" class="h-8 mx-6 inline-block">
+                
+                <!-- Duplicated for seamless loop -->
+                <span class="mx-6">YSKEW</span>
+                <span class="mx-2">///</span>
+                <span class="mx-6">BEYOND PARALLEL ASSUMPTIONS</span>
+                <img src="/assets/yskew_logo_rolling_text-M9FCKdQD.png" alt="Logo" class="h-8 mx-6 inline-block">
+
+                <!-- Third set -->
+                <span class="mx-6">YSKEW</span>
+                <span class="mx-2">///</span>
+                <span class="mx-6">BEYOND PARALLEL ASSUMPTIONS</span>
+                <img src="/assets/yskew_logo_rolling_text-M9FCKdQD.png" alt="Logo" class="h-8 mx-6 inline-block">
+                
+                <!-- Fourth set -->
+                <span class="mx-6">YSKEW</span>
+                <span class="mx-2">///</span>
+                <span class="mx-6">BEYOND PARALLEL ASSUMPTIONS</span>
+                <img src="/assets/yskew_logo_rolling_text-M9FCKdQD.png" alt="Logo" class="h-8 mx-6 inline-block">
+        </div>
+    </div>
+
+</body>
+</html>

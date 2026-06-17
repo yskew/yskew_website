@@ -24,6 +24,9 @@ let currentPlayer = userPlayer;
 let roundCycle = 0; // 0,1,2,3
 let gameActive = false;
 let scores = { player: 0, draw: 0, ai: 0 };
+let totalRoundsPlayed = 0;
+let postSecretPhase = false;
+let postSecretRounds = 0;
 
 const winCombos = [
     [0, 1, 2], [3, 4, 5], [6, 7, 8],
@@ -279,6 +282,13 @@ function init() {
             const landingPage = document.getElementById('landing-page');
             landingPage.classList.add('opacity-0', 'pointer-events-none');
             
+            // Hide the GitHub icon on game page
+            const githubIcon = document.getElementById('bottom-left-github-btn');
+            if (githubIcon) {
+                githubIcon.classList.remove('opacity-100');
+                githubIcon.classList.add('opacity-0', 'pointer-events-none');
+            }
+            
             // Show the game footer marquee
             const gameFooter = document.getElementById('game-footer-marquee');
             if (gameFooter) {
@@ -295,6 +305,92 @@ function init() {
     } else {
         // Start text typing intro sequence
         setTimeout(runTextType, 1000);
+    }
+
+    const playAgainBtn = document.getElementById('play-again-btn');
+    if (playAgainBtn) {
+        playAgainBtn.addEventListener('click', () => {
+            const secretContainer = document.getElementById('secret-container');
+            const gameContainer = document.getElementById('game-container');
+            
+            secretContainer.classList.remove('opacity-100');
+            secretContainer.classList.add('opacity-0', 'pointer-events-none');
+            
+            postSecretPhase = true;
+            postSecretRounds = 0;
+            
+            setTimeout(() => {
+                gameContainer.classList.remove('opacity-0', 'scale-95', 'pointer-events-none');
+                gameContainer.classList.add('opacity-100', 'scale-100');
+                startGame();
+            }, 500);
+        });
+    }
+
+    // --- Full Screen Menu Logic ---
+    const topMenuBtn = document.getElementById('top-menu-btn');
+    const fullScreenMenu = document.getElementById('full-screen-menu');
+    const menuLearnBtn = document.getElementById('menu-learn-btn');
+
+    if (topMenuBtn && fullScreenMenu) {
+        topMenuBtn.addEventListener('click', () => {
+            const isClosed = fullScreenMenu.classList.contains('opacity-0');
+            const landingPage = document.getElementById('landing-page');
+            
+            if (isClosed) {
+                if (landingPage && landingPage.classList.contains('opacity-0')) {
+                    if(menuLearnBtn) menuLearnBtn.textContent = 'Home';
+                } else {
+                    if(menuLearnBtn) menuLearnBtn.textContent = 'Learn Something New';
+                }
+
+                fullScreenMenu.classList.remove('opacity-0', 'pointer-events-none');
+                fullScreenMenu.classList.add('opacity-100');
+            } else {
+                fullScreenMenu.classList.add('opacity-0', 'pointer-events-none');
+                fullScreenMenu.classList.remove('opacity-100');
+            }
+        });
+    }
+
+    if (menuLearnBtn) {
+        menuLearnBtn.addEventListener('click', () => {
+            // Close menu
+            fullScreenMenu.classList.add('opacity-0', 'pointer-events-none');
+            fullScreenMenu.classList.remove('opacity-100');
+            
+            if (menuLearnBtn.textContent === 'Home') {
+                // Refresh the page to reset state back to landing page entirely
+                window.location.reload();
+                return;
+            }
+            
+            const landingPage = document.getElementById('landing-page');
+            
+            // Only trigger transition if landing page is still visible
+            if (landingPage && !landingPage.classList.contains('opacity-0')) {
+                landingPage.classList.add('opacity-0', 'pointer-events-none');
+                
+                // Hide the GitHub icon on game page
+                const githubIcon = document.getElementById('bottom-left-github-btn');
+                if (githubIcon) {
+                    githubIcon.classList.remove('opacity-100');
+                    githubIcon.classList.add('opacity-0', 'pointer-events-none');
+                }
+                
+                const gameFooter = document.getElementById('game-footer-marquee');
+                if (gameFooter) {
+                    gameFooter.classList.remove('opacity-0', 'pointer-events-none');
+                    gameFooter.classList.add('opacity-100');
+                }
+
+                setTimeout(() => {
+                    landingPage.style.display = 'none';
+                    // Start text typing intro sequence instead of bypassing it
+                    setTimeout(runTextType, 500);
+                }, 1000);
+            }
+        });
     }
 }
 
@@ -390,24 +486,73 @@ function makeMove(index, player) {
 function aiMove() {
     if (!gameActive) return;
     
-    let emptySpots = board.filter(s => s === null).length;
+    let emptySpots = board.map((s, i) => s === null ? i : null).filter(s => s !== null);
+    let choice = -1;
     
-    // Optimal first move for AI if AI goes first
-    if (emptySpots === 9) {
-        const options = [0, 2, 4, 6, 8]; // Corners + Center
-        const choice = options[Math.floor(Math.random() * options.length)];
+    if (!postSecretPhase) {
+        // Optimal first move for AI if AI goes first
+        if (emptySpots.length === 9) {
+            const options = [0, 2, 4, 6, 8]; // Corners + Center
+            choice = options[Math.floor(Math.random() * options.length)];
+        } 
+        // Response to user playing Center on turn 1
+        else if (emptySpots.length === 8 && board[4] === userPlayer) {
+            const corners = [0, 2, 6, 8];
+            choice = corners[Math.floor(Math.random() * corners.length)];
+        } 
+        else {
+            // Minimax
+            const bestMove = minimax(board, aiPlayer, 0, -10000, 10000);
+            choice = bestMove.index;
+        }
+    } else {
+        // Post-Secret Phase Logic
+        let difficulty = postSecretRounds < 2 ? 'moderate' : (Math.random() < 0.5 ? 'moderate' : 'hard');
+        
+        // AI's first move (either 9 or 8 spots left) should be a side, never a corner
+        if (emptySpots.length >= 8) {
+            const sides = [1, 3, 5, 7].filter(i => emptySpots.includes(i));
+            if (sides.length > 0) {
+                choice = sides[Math.floor(Math.random() * sides.length)];
+            } else {
+                choice = emptySpots[Math.floor(Math.random() * emptySpots.length)];
+            }
+        } else {
+            if (difficulty === 'moderate') {
+                // Moderate: Try to win, then block, then random
+                let winMove = -1;
+                for (let i of emptySpots) {
+                    board[i] = aiPlayer;
+                    if (checkWin(board, aiPlayer)) winMove = i;
+                    board[i] = null;
+                }
+                
+                if (winMove !== -1) {
+                    choice = winMove;
+                } else {
+                    let blockMove = -1;
+                    for (let i of emptySpots) {
+                        board[i] = userPlayer;
+                        if (checkWin(board, userPlayer)) blockMove = i;
+                        board[i] = null;
+                    }
+                    
+                    if (blockMove !== -1) {
+                        choice = blockMove;
+                    } else {
+                        choice = emptySpots[Math.floor(Math.random() * emptySpots.length)];
+                    }
+                }
+            } else {
+                // Hard: Minimax (which also actively wins and blocks perfectly)
+                const bestMove = minimax(board, aiPlayer, 0, -10000, 10000);
+                choice = bestMove.index;
+            }
+        }
+    }
+    
+    if (choice !== -1) {
         makeMove(choice, aiPlayer);
-    } 
-    // Response to user playing Center on turn 1
-    else if (emptySpots === 8 && board[4] === userPlayer) {
-        const corners = [0, 2, 6, 8];
-        const choice = corners[Math.floor(Math.random() * corners.length)];
-        makeMove(choice, aiPlayer);
-    } 
-    else {
-        // Minimax
-        const bestMove = minimax(board, aiPlayer, 0, -10000, 10000);
-        makeMove(bestMove.index, aiPlayer);
     }
     
     if (gameActive) {
@@ -519,9 +664,32 @@ function endGame(winner, combo = null) {
         drawWinLine(combo);
     }
     
-    // Cycle rounds and restart
+    if (postSecretPhase) {
+        postSecretRounds++;
+    }
+    totalRoundsPlayed++;
+    
+    // Cycle rounds
     roundCycle = (roundCycle + 1) % 4;
-    setTimeout(startGame, 3000);
+    
+    if (totalRoundsPlayed === 4 && !postSecretPhase) {
+        setTimeout(revealSecret, 3000);
+    } else {
+        setTimeout(startGame, 3000);
+    }
+}
+
+function revealSecret() {
+    const gameContainer = document.getElementById('game-container');
+    const secretContainer = document.getElementById('secret-container');
+    
+    gameContainer.classList.remove('opacity-100', 'scale-100');
+    gameContainer.classList.add('opacity-0', 'scale-95', 'pointer-events-none');
+    
+    setTimeout(() => {
+        secretContainer.classList.remove('opacity-0', 'pointer-events-none');
+        secretContainer.classList.add('opacity-100');
+    }, 500);
 }
 
 function updateScoreUI() {

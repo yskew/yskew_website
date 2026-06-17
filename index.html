@@ -21,13 +21,33 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body class="bg-[#050505] text-white h-screen w-screen overflow-hidden font-sans selection:bg-red-500/30">
+
+    <!-- Top Right Spinning Menu Button -->
+    <div id="top-menu-btn" class="fixed top-4 right-4 md:top-8 md:right-8 z-[220] w-16 h-16 md:w-28 md:h-28 cursor-pointer transition-transform duration-300 hover:scale-110 rounded-full group">
+        <img src="./assets/images/Menu.png" alt="Menu" class="w-full h-full object-contain animate-spin-slow">
+    </div>
+
+    <!-- Bottom Left GitHub Icon -->
+    <a href="https://github.com/yskew" target="_blank" rel="noopener noreferrer" id="bottom-left-github-btn" class="fixed bottom-4 left-4 md:bottom-8 md:left-8 z-[200] w-12 h-12 md:w-20 md:h-20 cursor-pointer transition-all duration-300 hover:scale-110 hover:-rotate-12 rounded-full group opacity-100">
+        <img src="./assets/images/github_icon.png" alt="GitHub" class="w-full h-full object-contain drop-shadow-[0_0_10px_rgba(255,255,255,0.2)] group-hover:drop-shadow-[0_0_20px_rgba(181,16,16,0.5)]">
+    </a>
+
+    <!-- Full-Screen Menu Overlay -->
+    <div id="full-screen-menu" class="fixed inset-0 z-[210] bg-black/80 flex flex-col items-center justify-center opacity-0 pointer-events-none transition-opacity duration-500 backdrop-blur-sm px-4">
+        <div class="flex flex-col items-center space-y-8 md:space-y-12 text-white text-3xl sm:text-4xl md:text-6xl tracking-widest text-center" style="font-family: 'PaintCans', 'Ciclope Black', sans-serif;">
+            <button id="menu-learn-btn" class="hover:text-[#AC2A12] transition-colors duration-300 drop-shadow-md">Learn Something New</button>
+            <a href="https://github.com/yskew" target="_blank" rel="noopener noreferrer" class="hover:text-[#AC2A12] transition-colors duration-300 drop-shadow-md">Github</a>
+            <a href="https://www.linkedin.com/company/yskew/?viewAsMember=true" target="_blank" rel="noopener noreferrer" class="hover:text-[#AC2A12] transition-colors duration-300 drop-shadow-md">Linkedin</a>
+        </div>
+    </div>
+
 <!-- NEW: Landing Page -->
     <div id="landing-page" class="absolute inset-0 z-[100] flex flex-col items-center justify-center bg-[#050505] bg-cover bg-center bg-no-repeat transition-opacity duration-1000 overflow-hidden" style="background-image: url('./assets/images/LandingPageBackground.png');">
         <!-- Optional darkening overlay removed per request -->
 
         <!-- Diagonal Marquee (Top Right) -->
-        <div class="absolute top-[8%] -right-[15%] w-[800px] md:top-[10%] md:-right-[10%] md:w-[1000px] bg-[#AC2A12]/85 overflow-hidden flex items-center h-12 md:h-16 z-50 transform rotate-45 shadow-[0_0_30px_rgba(0,0,0,0.8)] pointer-events-none">
-            <div class="flex whitespace-nowrap animate-marquee items-center text-gray-300 font-sans text-2xl md:text-4xl tracking-wide uppercase pt-1">
+        <div class="absolute top-[5%] -right-[30%] w-[150vw] sm:w-[600px] md:top-[10%] md:-right-[10%] md:w-[1000px] bg-[#AC2A12]/85 overflow-hidden flex items-center h-8 sm:h-12 md:h-16 z-50 transform rotate-45 shadow-[0_0_30px_rgba(0,0,0,0.8)] pointer-events-none">
+            <div class="flex whitespace-nowrap animate-marquee items-center text-gray-300 font-sans text-xl sm:text-2xl md:text-4xl tracking-wide uppercase pt-1">
                 <!-- First set -->
                 <span class="mx-6">YSKEW</span>
                 <span class="mx-2">///</span>
@@ -54,11 +74,11 @@
             </div>
         </div>
         
-        <div class="relative z-10 flex flex-col items-center text-center px-4 font-sans mt-20">
-            <h1 id="landing-title" class="text-[6rem] md:text-[10rem] font-bold tracking-widest text-white mb-2 drop-shadow-xl whitespace-nowrap" style="font-family: 'PaintCans', 'Ciclope Black', sans-serif;">Yskew</h1>
+        <div class="relative z-10 flex flex-col items-center text-center px-4 font-sans mt-10 md:mt-20">
+            <h1 id="landing-title" class="text-[4rem] sm:text-[6rem] md:text-[10rem] font-bold tracking-widest text-white mb-2 drop-shadow-xl whitespace-nowrap" style="font-family: 'PaintCans', 'Ciclope Black', sans-serif;">Yskew</h1>
             
-            <div id="landing-subtitle" class="flex flex-col items-center mt-4">
-                <div class="text-3xl md:text-5xl font-bold tracking-wide drop-shadow-md text-white min-h-[60px] flex items-center justify-center" style="font-family: 'PaintCans', 'Ciclope Black', sans-serif;">
+            <div id="landing-subtitle" class="flex flex-col items-center mt-2 md:mt-4">
+                <div class="text-xl sm:text-3xl md:text-5xl font-bold tracking-wide drop-shadow-md text-white min-h-[40px] md:min-h-[60px] flex items-center justify-center px-2" style="font-family: 'PaintCans', 'Ciclope Black', sans-serif;">
                     <span id="landing-text-content" style="-webkit-text-stroke: 0.25px #000;"></span>
                     <span id="landing-text-cursor" class="ml-1 hidden font-light" style="-webkit-text-stroke: 0px;">|</span>
                 </div>
@@ -66,15 +86,14 @@
         </div>
 
         <!-- Bottom Right Button and Arrow -->
-        <div id="landing-bottom-right" class="absolute bottom-12 right-12 flex items-center justify-end opacity-0 pointer-events-none z-20">
+        <div id="landing-bottom-right" class="absolute bottom-6 right-6 md:bottom-12 md:right-12 flex items-center justify-end opacity-0 pointer-events-none z-20">
             <!-- Arrow pointing right towards button (Comical/Bouncing) -->
-            <svg id="landing-arrow" class="w-16 h-16 text-white mr-4 animate-bounce" style="animation: bounce-x 1s cubic-bezier(0.8, 0, 1, 1) infinite;" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <svg id="landing-arrow" class="w-8 h-8 mr-2 sm:w-10 sm:h-10 sm:mr-2 md:w-16 md:h-16 text-white md:mr-4 animate-bounce" style="animation: bounce-x 1s cubic-bezier(0.8, 0, 1, 1) infinite;" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
             </svg>
             
-            <button id="play-game-btn" class="group relative px-4 py-2 bg-[#B51010] text-white text-base md:text-lg tracking-widest uppercase overflow-hidden rounded-md transition-all duration-300 hover:scale-105 hover:shadow-[0_0_30px_rgba(181,16,16,0.6)] border-4 border-black" style="font-family: 'Ciclope Black', sans-serif;">
-                <span class="relative z-10 drop-shadow-md">Learn Something new</span>
-                <div class="absolute inset-0 h-full w-0 bg-white/20 transition-all duration-300 ease-out group-hover:w-full"></div>
+            <button id="play-game-btn" class="group relative transition-all duration-300 hover:scale-105 cursor-pointer bg-transparent border-none p-0 outline-none">
+                <img src="./assets/images/learn_something_new.png" alt="Learn Something New" class="h-10 sm:h-16 md:h-20 w-auto drop-shadow-[0_0_10px_rgba(181,16,16,0.4)] group-hover:drop-shadow-[0_0_25px_rgba(181,16,16,0.8)] transition-all duration-300">
             </button>
         </div>
     </div>
@@ -97,11 +116,11 @@
         </div>
 
         <!-- Game Board & Intro (Right Full Screen) -->
-        <div class="w-full lg:w-1/2 h-full flex flex-col justify-center items-center relative perspective-1000 bg-transparent pb-[20vh] pr-20">
+        <div class="w-full lg:w-1/2 h-full flex flex-col justify-center items-center relative perspective-1000 bg-transparent pb-[10vh] md:pb-[20vh] px-4 lg:px-0 lg:pr-20">
             
             <!-- React Bits TextType Container (Vanilla Port) -->
             <div id="intro-container" class="absolute inset-0 flex items-center justify-center z-50 transition-opacity duration-1000">
-                <div class="text-5xl lg:text-6xl font-light text-center px-12 tracking-wide leading-relaxed max-w-2xl min-h-[200px] flex items-center justify-center">
+                <div class="text-3xl sm:text-5xl lg:text-6xl font-light text-center px-4 md:px-12 tracking-wide leading-relaxed max-w-2xl min-h-[200px] flex items-center justify-center">
                     <div>
                         <span id="text-type-content" class="text-white"></span>
                         <span id="text-type-cursor" class="text-white ml-1 inline-block">|</span>
@@ -110,7 +129,7 @@
             </div>
 
             <!-- Game Container (Initially Hidden) -->
-            <div id="game-container" class="absolute inset-0 flex flex-col justify-center items-center opacity-0 pointer-events-none scale-95 transition-all duration-1000 z-10 mb-[20vh]">
+            <div id="game-container" class="absolute inset-0 flex flex-col justify-center items-center opacity-0 pointer-events-none scale-95 transition-all duration-1000 z-10 mb-[10vh] md:mb-[20vh]">
 
                 <!-- Game UI Wrapper -->
                 <div class="relative w-full max-w-lg aspect-square flex items-center justify-center scale-90 lg:scale-100">
@@ -123,27 +142,42 @@
                 </div>
 
                 <!-- Score / Status Area -->
-                <div class="absolute bottom-12 flex items-end space-x-12 text-3xl font-bold tracking-widest uppercase">
+                <div class="absolute bottom-6 md:bottom-12 flex items-end space-x-6 md:space-x-12 text-xl md:text-3xl font-bold tracking-widest uppercase">
                     <div class="flex items-center text-white transition-transform duration-300 hover:scale-110">
-                        <div class="w-10 h-10 mr-4 svg-icon red-icon bg-white rounded-md p-1" id="icon-player-score"></div>
+                        <div class="w-6 h-6 mr-2 md:w-10 md:h-10 md:mr-4 svg-icon red-icon bg-white rounded-md p-1" id="icon-player-score"></div>
                         <span id="score-player">0</span>
                     </div>
-                    <div class="text-white text-2xl pb-1 opacity-80">
+                    <div class="text-white text-lg md:text-2xl pb-1 opacity-80">
                         DRAW - <span id="score-draw">0</span>
                     </div>
                     <div class="flex items-center text-white transition-transform duration-300 hover:scale-110">
-                        <div class="w-10 h-10 mr-4 svg-icon blue-icon bg-white rounded-md p-1" id="icon-ai-score"></div>
+                        <div class="w-6 h-6 mr-2 md:w-10 md:h-10 md:mr-4 svg-icon blue-icon bg-white rounded-md p-1" id="icon-ai-score"></div>
                         <span id="score-ai">0</span>
                     </div>
                 </div>
                 
             </div>
+
+            <!-- Secret Container (Initially Hidden) -->
+            <div id="secret-container" class="absolute inset-0 flex flex-col justify-center items-center opacity-0 pointer-events-none transition-opacity duration-1000 z-20 mb-[10vh] md:mb-[20vh] px-4 md:px-8">
+                <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-8 text-[#B51010] uppercase tracking-wider text-center" style="font-family: 'Ciclope Black', sans-serif;">The Secret Blueprint</h2>
+                <div class="text-xs sm:text-sm md:text-base lg:text-xl font-light space-y-3 md:space-y-6 text-left max-w-xl leading-relaxed bg-black/40 p-4 md:p-8 rounded-xl border border-white/10 backdrop-blur-sm shadow-2xl">
+                    <p><strong class="text-white font-bold tracking-wide">If you go first:</strong> Take a corner. Next, claim another corner to create a "fork" (two ways to win at once), forcing a guaranteed victory.</p>
+                    <p><strong class="text-white font-bold tracking-wide">If you go second:</strong> You are playing for a draw. If they take a corner, you must take the center immediately to block their trap.</p>
+                    <div class="w-full h-px bg-white/20 my-2 md:my-4"></div>
+                    <p class="text-gray-300 font-medium italic">Bottom Line: First player attacks the corners; second player survives by holding the center.</p>
+                </div>
+                <button id="play-again-btn" class="mt-4 md:mt-10 group relative px-6 py-2 md:px-8 md:py-3 bg-[#B51010] text-white text-base md:text-xl tracking-widest uppercase overflow-hidden rounded-md transition-all duration-300 hover:scale-105 hover:shadow-[0_0_30px_rgba(181,16,16,0.6)] border-4 border-black" style="font-family: 'Ciclope Black', sans-serif;">
+                    <span class="relative z-10 drop-shadow-md">Play Again</span>
+                    <div class="absolute inset-0 h-full w-0 bg-white/20 transition-all duration-300 ease-out group-hover:w-full"></div>
+                </button>
+            </div>
         </div>
     </div>
 
     <!-- Scrolling Footer Marquee -->
-    <div id="game-footer-marquee" class="fixed bottom-[10%] left-0 w-full bg-[#C6C6C6] overflow-hidden flex items-center h-16 z-50 opacity-0 pointer-events-none transition-opacity duration-1000">
-        <div class="flex whitespace-nowrap animate-marquee items-center text-black font-sans text-4xl tracking-wide uppercase pt-1">
+    <div id="game-footer-marquee" class="fixed bottom-[5%] md:bottom-[10%] left-0 w-full bg-[#C6C6C6] overflow-hidden flex items-center h-12 md:h-16 z-50 opacity-0 pointer-events-none transition-opacity duration-1000">
+        <div class="flex whitespace-nowrap animate-marquee items-center text-black font-sans text-2xl md:text-4xl tracking-wide uppercase pt-1">
             <!-- First set -->
             <span class="mx-6">YSKEW</span>
             <span class="mx-2">///</span>

@@ -231,3 +231,52 @@ body {
     0%, 100% { transform: translateX(0); }
     50% { transform: translateX(-40%); }
 }
+
+.animate-spin-slow {
+    animation: spin 15s linear infinite;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Mobile Responsiveness for Game Board */
+@media (max-width: 768px) {
+    .game-board-container {
+        width: 320px;
+        height: 320px;
+    }
+    .game-board-container::before {
+        inset: -30px;
+    }
+    #board {
+        width: 240px;
+        height: 240px;
+    }
+    .token {
+        width: 48px;
+        height: 48px;
+    }
+}
+@media (max-width: 380px) {
+    .game-board-container {
+        width: 280px;
+        height: 280px;
+    }
+    .game-board-container::before {
+        inset: -20px;
+    }
+    #board {
+        width: 200px;
+        height: 200px;
+    }
+    .token {
+        width: 40px;
+        height: 40px;
+    }
+}
