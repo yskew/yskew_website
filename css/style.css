@@ -222,8 +222,8 @@ body {
         transform: translateX(0);
     }
     100% {
-        /* 4 identical blocks. Move left by exactly 25% (one block width) to loop seamlessly */
-        transform: translateX(-25%);
+        /* 8 identical blocks. Move left by exactly 12.5% (one block width) to loop seamlessly */
+        transform: translateX(-12.5%);
     }
 }
 
