@@ -259,12 +259,45 @@ function animateLandingPage() {
 
 // --------------------------------------------------------------------------
 
+function startLoadingScreen() {
+    const counterObj = { val: 0 };
+    const counterEl = document.getElementById('loading-counter');
+    const loadingScreen = document.getElementById('loading-screen');
+
+    // Run the GSAP counter animation over 2.5 seconds to buy time for the background image
+    gsap.to(counterObj, {
+        val: 100,
+        duration: 2.5,
+        ease: "power2.inOut",
+        onUpdate: function() {
+            if (counterEl) {
+                counterEl.textContent = Math.floor(counterObj.val);
+            }
+        },
+        onComplete: function() {
+            if (loadingScreen) {
+                // Fade out the loading screen
+                loadingScreen.classList.add('opacity-0', 'pointer-events-none');
+                
+                // Start landing page intro animation immediately as the loading screen fades out
+                animateLandingPage();
+                
+                setTimeout(() => {
+                    loadingScreen.style.display = 'none';
+                }, 1000); // Match transition-opacity duration-1000
+            } else {
+                animateLandingPage();
+            }
+        }
+    });
+}
+
 function init() {
     createBoard();
     updateScoreUI();
     
-    // Start landing page intro animation
-    animateLandingPage();
+    // Start loading screen (which handles triggering animateLandingPage afterwards)
+    startLoadingScreen();
     
     // GSAP Cursor Blinking Animation
     gsap.set('#text-type-cursor', { opacity: 1 });

@@ -20,7 +20,7 @@
         }
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-  <script type="module" crossorigin src="/assets/index-BTOxBbBk.js"></script>
+  <script type="module" crossorigin src="/assets/index-Cw8n-6MN.js"></script>
   <link rel="stylesheet" crossorigin href="/assets/index-B_o2eflI.css">
 </head>
 <body class="bg-[#050505] text-white h-screen w-screen overflow-hidden font-sans selection:bg-red-500/30">
@@ -41,6 +41,17 @@
             <button id="menu-learn-btn" class="hover:text-[#AC2A12] transition-colors duration-300 drop-shadow-md">Learn Something New</button>
             <a href="https://github.com/yskew" target="_blank" rel="noopener noreferrer" class="hover:text-[#AC2A12] transition-colors duration-300 drop-shadow-md">Github</a>
             <a href="https://www.linkedin.com/company/yskew/?viewAsMember=true" target="_blank" rel="noopener noreferrer" class="hover:text-[#AC2A12] transition-colors duration-300 drop-shadow-md">Linkedin</a>
+        </div>
+    </div>
+
+    <!-- Loading Screen Overlay -->
+    <div id="loading-screen" class="fixed inset-0 z-[300] bg-[#050505] flex flex-col items-center justify-center transition-opacity duration-1000">
+        <div class="text-white text-[6rem] md:text-[12rem] font-bold tracking-widest drop-shadow-2xl flex items-baseline" style="font-family: 'PaintCans', 'Ciclope Black', sans-serif;">
+            <span id="loading-counter">0</span>
+            <span class="text-[3rem] md:text-[6rem] text-red-600 ml-2">%</span>
+        </div>
+        <div class="text-gray-400 mt-4 tracking-widest uppercase text-sm md:text-base animate-pulse" style="font-family: 'PaintCans', 'Ciclope Black', sans-serif;">
+            Loading Assets...
         </div>
     </div>
 
