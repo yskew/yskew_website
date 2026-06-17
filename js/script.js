@@ -264,10 +264,13 @@ function startLoadingScreen() {
     const counterEl = document.getElementById('loading-counter');
     const loadingScreen = document.getElementById('loading-screen');
 
-    // Run the GSAP counter animation over 2.5 seconds to buy time for the background image
+    // Fade in the text just in case it was hidden to prevent FOUT
+    gsap.to('#loading-content', { opacity: 1, duration: 0.5 });
+
+    // Run the GSAP counter animation over 3.5 seconds to buy time for the background image
     gsap.to(counterObj, {
         val: 100,
-        duration: 2.5,
+        duration: 3.5,
         ease: "power2.inOut",
         onUpdate: function() {
             if (counterEl) {
